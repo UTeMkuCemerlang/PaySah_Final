@@ -1,0 +1,132 @@
+{
+  "kind": "krackeddevs vision model vs CPU OCR, synthetic receipts only (offline comparison, not used by the app)",
+  "checked_at": "2026-10-31T17:15:18.208Z",
+  "status": "FINISHED",
+  "provider": "krackeddevs",
+  "model": "gpt-5.4-mini",
+  "prompt_version": "receipt-fields.v2",
+  "parser_version": "runpod-vlm-json.v1",
+  "manifest_sha256": "b28cc704b04375b0866bf4bcf2fb0210d8d24de8a29c77cfc8443faa5ce8c50f",
+  "cpu_baseline_checked_at": "2026-10-31T17:14:57.415Z",
+  "note": "Same 36-image diagnostic set and prompt as the RunPod run; not a held-out set. Wall time includes network, so it is not a fair speed comparison.",
+  "summary": {
+    "planned": 1,
+    "attempted": 1,
+    "not_attempted": 0,
+    "completed_valid": 1,
+    "failed_or_invalid": 0,
+    "correct_fields": 7,
+    "total_fields": 7,
+    "cpu_paired_correct_fields": 7,
+    "exact_samples": 1,
+    "false_eligible": 0,
+    "role_downgrades": 0,
+    "wall_p50_ms": 9545,
+    "wall_p95_ms": 9545
+  },
+  "model_self_report": {
+    "note": "The model naming its own doubts; a low count here does not make a reading safe",
+    "receipts_flagged": 0,
+    "receipts_with_wrong_fields": 0,
+    "wrong_fields_total": 0,
+    "wrong_fields_flagged": 0,
+    "correct_fields_flagged": 0
+  },
+  "with_cpu_cross_check": {
+    "rule": "Model field differs from CPU reading -> MODEL_UNCONFIRMED -> Owner review",
+    "cashier_wrongly_eligible": 0,
+    "owner_routed_by_cross_check": 0,
+    "rows": [
+      {
+        "id": "ledger-normal",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "CASHIER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      }
+    ]
+  },
+  "rows": [
+    {
+      "id": "ledger-normal",
+      "sha256": "f2abff6d0b30098ded15d974d6504bd7e9e9ab1efa16c881440d9d927e3524d9",
+      "layout": "ledger",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6xpNEfNA9gy7v62dnwFyRMrHAwx",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 9545,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 678,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    }
+  ]
+}

@@ -56,3 +56,9 @@ Submission repository: [UTeMkuCemerlang/PaySah_Final](https://github.com/UTeMkuC
 | Human impact measurements | No completed participant-time or observed file-action evidence supplied in this update. Do not claim the 30% target achieved. |
 
 Missing files remain pending; this index does not certify a completed submission. PDFs and screenshot evidence retain their original content and dates.
+
+## Template alignment — 1 November 2026
+
+The root README follows the organizer's sections and links to the actual Node.js source layout. The latest update adds saved synthetic CPU/model evaluation evidence and corrects the current Owner manual-acceptance behaviour; it does not supply missing Finalist PDFs. See [validation history](VALIDATION.md) and [evaluation notes](../src/evaluation/compare-vlm/README.md).
+
+PaySah_Final was verified public during this update. Designated collaborator access and current public video access remain unverified. The four-member roster is still incomplete in the README. No missing report or declaration has been replaced with an empty placeholder or a renamed Phase 1 document.

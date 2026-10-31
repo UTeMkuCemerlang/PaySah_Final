@@ -23,11 +23,15 @@ Receipt verification for Malaysian small businesses: compare receipt details wit
 
 ## Overview
 
-### Problem and solution
+### Problem
 
-Small merchants receive transfer screenshots but still need to establish whether money arrived. PaySah extracts receipt fields, checks explainable rules against independent bank records, and keeps human payment and release decisions separate. Cashier and Owner permissions, duplicate evidence detection and activity records support review.
+Small merchants receive transfer screenshots but still need to establish whether money arrived. Checking screenshots against orders and bank records takes manual effort, and a screenshot may describe an incomplete or scheduled transfer.
 
-The public prototype uses synthetic customers, receipts and bank credits. It does not connect to a real bank or move money. Screenshots alone never establish payment. Partial or invalid evidence stays blocked; payments above each shop's review threshold require Owner approval. Existing shops retain RM500; the optional Laundry demonstration uses RM200.
+### Solution
+
+PaySah extracts receipt fields, checks explainable rules against independent bank records, and keeps human payment and release decisions separate. The current interface is Owner-focused; legacy Cashier permissions remain in the API and regression tests.
+
+The public prototype uses synthetic customers, receipts and bank credits. It does not connect to a real bank or move money. Screenshots alone never establish payment. Normal confirmation requires eligible evidence. The Owner can also accept an unpaid or partially paid order with a recorded reason; this produces MANUALLY_CONFIRMED, not PAID, and does not allocate a bank credit. Partial payments can be retained and supplemented, or rejected. Existing shops use a RM500 review threshold; the optional Laundry demonstration uses RM200. These controls do not guarantee that an Owner cannot override a warning.
 
 ### Key features
 
@@ -79,7 +83,7 @@ Phase 1 submission documents (not updated Finalist reports): [preliminary propos
 
 ## Architecture
 
-Receipt upload or channel intake → Express API and private image storage → persistent extraction worker → RunPod vision model or CPU fallback → server-side verification against orders and bank evidence → Cashier / Owner review → separate confirmation and release → activity log.
+Receipt upload or channel intake → Express API and private image storage → persistent extraction worker → RunPod vision model or CPU fallback → server-side verification against orders and bank evidence → Owner review → separate confirmation and release → activity log.
 
 PostgreSQL stores orders, receipt fields, jobs and audit records. Server-side identity, tenant and permission checks protect business operations. The demonstration bank feed is synthetic.
 
@@ -102,7 +106,7 @@ npm run db:seed
 npm run dev
 ```
 
-Open http://127.0.0.1:5173 and select a synthetic shop and role. Copy the environment template only on a fresh checkout. For a managed database, set DATABASE_URL and skip the portable database command. The example password is development-only.
+Open http://127.0.0.1:5173 and select a synthetic Owner account. Copy the environment template only on a fresh checkout. For a managed database, set DATABASE_URL and skip the portable database command. The example password is development-only.
 
 The default fixture mode needs no GPU. For actual CPU image reading, set EXTRACTOR_MODE=cpu_ocr and run npm run worker in another terminal, also from src/.
 
@@ -134,7 +138,7 @@ The deployed endpoint/model identification is shown in the [RunPod proof PDF](su
 
 The source includes the glass ribbon interface, Owner-only demo reset, 180-second receipt-worker lease, English Telegram acknowledgements and their regression tests. See [demo operations](src/docs/DEMO_OPERATIONS.md). Reset deletes the selected demo shop's history; save proof first.
 
-Telegram and Google Form intake each completed a real end-to-end test on 24 October 2026. These two runs used CPU fallback after GPU extraction timed out; they do not establish GPU success or replay reliability. Telegram accepts allowlisted team accounts only. Other accounts are ignored by design; reviewers can use the Google Form link generated on an order page instead.
+Telegram and Google Form intake each completed a real end-to-end test on 24 October 2026. These two runs used CPU fallback after GPU extraction timed out; they do not establish GPU success or replay reliability. Those historical runs used allowlisted team accounts. Current source supports both allowlist and bounded demo-link modes; enabled channels depend on deployment configuration. Reviewers should use the channels available on a newly created synthetic order.
 
 ## Challenges and Learnings
 
@@ -170,7 +174,7 @@ The finalist source adds versioned shop policies, an optional Laundry SME fixtur
 
 PaySah_Final preserves the imported development commit history and subsequent merge commits; it was not replaced with a single source snapshot. Original development repository: [PaySah](https://github.com/UTeMkuCemerlang/PaySah). This provenance statement does not assert compliance with the judges' assessment of development history. Required collaborator access on the new repository remains to be verified.
 
-Check which source the live site runs by opening [/api/v1/health](https://paysah.replit.app/api/v1/health) and comparing `stage` and `commit` with this repository. Later documentation-only commits do not change the application source.
+Inspect [/api/v1/health](https://paysah.replit.app/api/v1/health), then verify the deployed frontend assets and workflows. The `commit` value can be supplied by PAYSAH_BUILD_COMMIT and is not sufficient proof of deployed source identity. Later documentation-only commits do not change the application source.
 
 For reviewers on the live demo: choose a synthetic account, create a new order and use its Google Form link. Do not use the protected recording orders DEMO-A-128 and DEMO-A-780. Send only synthetic sample images, never a real bank receipt.
 
@@ -186,3 +190,30 @@ The script makes direct HTTP requests and reports the precise denied responses, 
 `npm run mock:orbyte` and `npm run eval:e2e` run local fixture workflows. `npm run smoke:finalist` exercises two browser windows, draft retention and mobile Laundry layout after a build. Human timing, observed employee file actions, new GPU accuracy and current platform costs are not supplied by these scripts. Report their actual measurements separately; do not claim the 30% processing-time target has been achieved without observations.
 
 Telegram remains allowlisted by default. Public demo access requires an explicit `TELEGRAM_INTAKE_MODE=demo_link` rollout, demo tenant, valid order token, quotas and authorisation of real channel tests. The initial live deployment's historical allowlist description above is not proof that this new mode is live. Judges should use a new synthetic order rather than protected recording orders.
+
+
+## Latest evaluation evidence
+
+[Evaluation notes and raw results](src/evaluation/compare-vlm/README.md) record a 36-image synthetic diagnostic run: KrackedDevs gpt-5.4-mini extracted 249/252 fields correctly (33/36 exact receipts); the paired CPU run extracted 224/252. These are not held-out or real-bank accuracy estimates. The unassisted model's rule results incorrectly classified six cases as eligible; no payment approval or release was executed in this evaluation. CPU disagreement flags are not an Owner-proof safety barrier.
+
+## Team
+
+| Name | Role | GitHub |
+| --- | --- | --- |
+| Chong Kai Li | Team leader | Not confirmed in this update |
+
+The team has four members. The remaining member names, roles and GitHub handles must be confirmed by the team before this roster is complete.
+
+## Submission Checklist
+
+- [x] Team name, domain and SDG track supplied.
+- [x] Phase 1 deck and video links supplied; current video accessibility not rechecked.
+- [x] Replit and RunPod proof PDFs included in submission/.
+- [x] Phase 1 proposal and declaration included under team-specific filenames.
+- [x] Source, dependency lockfile, configuration example, tests and Apache-2.0 license included.
+- [x] Local test/build/intake checks recorded in submission/VALIDATION.md.
+- [ ] Complete the four-member Team roster.
+- [ ] Supply the Finalist report, updated declaration under the template filename, and flattened Finalist pitch PDF.
+- [ ] Verify designated collaborator access and final public video availability.
+
+The repository follows the [organizer submission template](https://github.com/michaelzhngg/SDC_Hackathon_Submission_Template), adapted to the actual Node.js application: dependencies, tests and environment example live in src/. Missing team materials remain explicitly pending.
