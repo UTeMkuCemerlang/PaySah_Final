@@ -11,7 +11,7 @@ Receipt verification for Malaysian small businesses: compare receipt details wit
 | SDG alignment | Primary SDG 8.2 — productivity through technology; supporting SDG 8.3 — support micro and small enterprises |
 | Team Leader | Chong Kai Li |
 | University | Universiti Teknikal Malaysia Melaka (UTeM) |
-| Number of Members | 4 |
+| Number of Members | 5 |
 
 ## Links
 
