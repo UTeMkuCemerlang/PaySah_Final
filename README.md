@@ -19,6 +19,9 @@ Receipt verification for Malaysian small businesses: compare receipt details wit
 - [GitHub repository](https://github.com/UTeMkuCemerlang/PaySah_Final)
 - [Phase 1 pitch video](https://youtu.be/4aPbn72CRjA)
 - [Phase 1 slide deck](submission/PaySah-Town.pdf)
+- [Finalist report (PDF)](submission/SDC2026_UTeMkuCemerlang_Final.pdf)
+- [Finalist technical tools declaration (PDF)](submission/SDC2026_UTeMkuCemerlang_TechDeclaration.pdf)
+- [Finalist pitch deck (PPTX)](submission/PaySahOnline_FinalPitch.pptx)
 - [Submission files and remaining items](submission/README.md)
 
 ## Overview
@@ -153,15 +156,15 @@ Independent bank evidence is the main integration constraint, so the prototype u
 
 ## Submission Status and License
 
-The repository includes the Phase 1 proposal, technical tools declaration, pitch deck, video link and platform proof documents. The Finalist report, updated declaration and flattened Finalist pitch PDF are still missing. Existing Phase 1 files are not substitutes; see the submission index for the outstanding items. The linked video's current public accessibility has not been rechecked in this review.
+The repository includes the Finalist report and updated technical tools declaration as PDFs, plus the 11-slide Finalist pitch deck as PPTX. The PPTX preserves each original pitch page as a full-slide image; its text is not individually editable. Phase 1 proposal, declaration, pitch deck, video link and platform proof documents remain at their original paths. A flattened Finalist pitch PDF is not included in this upload; see the submission index for remaining items. The linked video's current public accessibility has not been rechecked in this update.
 
 The prototype demonstrates AI-assisted receipt extraction, rule-based payment verification, role-based approval, and receipt intake through Telegram and Google Forms. The demonstration uses synthetic receipts and bank records; it does not connect to a live bank or payment gateway.
 
-Licensed under [Apache-2.0](LICENSE). Third-party packages retain their respective licenses. See the [technical tools declaration](submission/SDC2026_UTeMkuCemerlang_TechDeclaration_final.pdf) and supporting [source disclosure](src/submission/TOOLS_DECLARATION.md).
+Licensed under [Apache-2.0](LICENSE). Third-party packages retain their respective licenses. See the [Finalist technical tools declaration](submission/SDC2026_UTeMkuCemerlang_TechDeclaration.pdf) and supporting [source disclosure](src/submission/TOOLS_DECLARATION.md).
 
 ## Finalist implementation
 
-The finalist source adds versioned shop policies, an optional Laundry SME fixture, denied-action auditing, order-filtered incremental activity, five-second workspace refresh and draft protection, a proposed Orbyte mock, explicit bounded Telegram demo-link intake and build commit metadata. On 31 October 2026, the live health endpoint returned stage FINALIST and source commit afe07043a1d4349b9ff30dc0e678cfb8425aadba. The team supplied a Replit preflight screenshot with 11/11 checks passed for that build. Health does not check database readiness or prove the signed-in workflows; those were not independently retested in this documentation update. The PDFs linked above describe Phase 1 and are not rewritten Finalist reports.
+The finalist source adds versioned shop policies, an optional Laundry SME fixture, denied-action auditing, order-filtered incremental activity, five-second workspace refresh and draft protection, a proposed Orbyte mock, explicit bounded Telegram demo-link intake and build commit metadata. On 31 October 2026, the live health endpoint returned stage FINALIST and source commit afe07043a1d4349b9ff30dc0e678cfb8425aadba. The team supplied a Replit preflight screenshot with 11/11 checks passed for that build. Health does not check database readiness or prove the signed-in workflows; those were not independently retested in this documentation update. The Phase 1 PDFs retain their original content; the Finalist report and updated declaration are linked separately above.
 
 - [Architecture](docs/ARCHITECTURE.md)
 - [API contract](docs/FINALIST_API.md)
@@ -214,7 +217,9 @@ The team has four members. The remaining member names, roles and GitHub handles 
 - [x] Source, dependency lockfile, configuration example, tests and Apache-2.0 license included.
 - [x] Local test/build/intake checks recorded in submission/VALIDATION.md.
 - [ ] Complete the four-member Team roster.
-- [ ] Supply the Finalist report, updated declaration under the template filename, and flattened Finalist pitch PDF.
+- [x] Finalist report and updated technical tools declaration PDFs included.
+- [x] Finalist pitch PPTX included (11 unchanged page images).
+- [ ] Supply the flattened Finalist pitch PDF required by the submission template.
 - [ ] Verify designated collaborator access and final public video availability.
 
 The repository follows the [organizer submission template](https://github.com/michaelzhngg/SDC_Hackathon_Submission_Template), adapted to the actual Node.js application: dependencies, tests and environment example live in src/. Missing team materials remain explicitly pending.

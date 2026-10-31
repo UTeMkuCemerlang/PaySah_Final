@@ -34,13 +34,14 @@ Replit evidence update (24 October 2026): four original screenshots show the liv
 
 | Required material | Filename | Status |
 | --- | --- | --- |
-| Final report | SDC2026_UTeMkuCemerlang_Final.pdf | Not present in this repository; pending team completion |
-| Technical tools declaration | SDC2026_UTeMkuCemerlang_TechDeclaration.pdf | Not present in this repository; pending team completion |
-| Flattened pitch deck | PDF, name to be set by the team | Not present in this repository; pending team completion |
+| Final report | [SDC2026_UTeMkuCemerlang_Final.pdf](SDC2026_UTeMkuCemerlang_Final.pdf) | Uploaded 1 November 2026; 8 pages |
+| Technical tools declaration | [SDC2026_UTeMkuCemerlang_TechDeclaration.pdf](SDC2026_UTeMkuCemerlang_TechDeclaration.pdf) | Uploaded 1 November 2026; 8 pages |
+| Finalist pitch deck (PPTX) | [PaySahOnline_FinalPitch.pptx](PaySahOnline_FinalPitch.pptx) | Uploaded 1 November 2026; 11 unchanged page images; text not individually editable |
+| Flattened Finalist pitch PDF | PDF | Not included in this upload; PPTX does not replace the required PDF |
 
 The Phase 1 documents above keep their original paths and describe Phase 1 only.
 
-## Finalist submission checklist — 31 October 2026
+## Finalist submission checklist — updated 1 November 2026
 
 Submission repository: [UTeMkuCemerlang/PaySah_Final](https://github.com/UTeMkuCemerlang/PaySah_Final).
 
@@ -49,16 +50,20 @@ Submission repository: [UTeMkuCemerlang/PaySah_Final](https://github.com/UTeMkuC
 | Working deployment | Health returned FINALIST / afe07043a1d4349b9ff30dc0e678cfb8425aadba on 31 October. Signed-in workflows were not retested in this documentation update. |
 | Reproducible README | Clone command points to PaySah_Final; application commands run from src/. |
 | Development history | Existing development and merge history retained. No replacement snapshot or manufactured incremental commits. Judging compliance is not certified here. |
-| Final report and word limits | Final PDF absent. Complete the official template, check word limits and signatures, then upload. |
-| Updated tools declaration | Standard Finalist filename absent. The Phase 1 _final file remains historical, not relabelled. |
-| Flattened Finalist pitch PDF | Absent. The existing PaySah-Town.pdf is Phase 1 material. |
+| Final report and word limits | Finalist PDF included above. Word limits and all 8 rendered pages checked; existing signature retained. |
+| Updated tools declaration | Updated Finalist PDF included under the standard filename. Historical Phase 1 _final file remains unchanged. |
+| Finalist pitch deck | PPTX included above. Flattened Finalist PDF is still not included; PaySah-Town.pdf remains Phase 1 material. |
 | Required collaborator | Access on PaySah_Final has not been verified. |
 | Human impact measurements | No completed participant-time or observed file-action evidence supplied in this update. Do not claim the 30% target achieved. |
 
-Missing files remain pending; this index does not certify a completed submission. PDFs and screenshot evidence retain their original content and dates.
+The three Finalist files above were uploaded without changing the existing Phase 1 files or screenshot evidence. Outstanding checklist items remain pending; upload status does not certify a completed submission.
 
 ## Template alignment — 1 November 2026
 
-The root README follows the organizer's sections and links to the actual Node.js source layout. The latest update adds saved synthetic CPU/model evaluation evidence and corrects the current Owner manual-acceptance behaviour; it does not supply missing Finalist PDFs. See [validation history](VALIDATION.md) and [evaluation notes](../src/evaluation/compare-vlm/README.md).
+The root README follows the organizer's sections and links to the actual Node.js source layout. The earlier source update added saved synthetic CPU/model evaluation evidence and corrected the Owner manual-acceptance description. This submission update supplies the Finalist report and declaration PDFs and the pitch PPTX without changing application source or deploying the application. See [validation history](VALIDATION.md) and [evaluation notes](../src/evaluation/compare-vlm/README.md).
 
 PaySah_Final was verified public during this update. Designated collaborator access and current public video access remain unverified. The four-member roster is still incomplete in the README. No missing report or declaration has been replaced with an empty placeholder or a renamed Phase 1 document.
+
+## Finalist upload notes — 1 November 2026
+
+The report and declaration incorporate the final document review, including the live KrackedDevs advisory reader, Owner override records, simulated /pay flow, and separately labelled GPU/CPU/model diagnostics. The pitch PPTX was converted from the team's existing pitch PDF without changing its page contents; it has not been rewritten to reconcile every historical statement with the updated reports. Treat the Finalist report and declaration as the current implementation disclosures. Human handling-time savings remain unmeasured. Existing submission files were preserved, including the historical Phase 1 declaration.
