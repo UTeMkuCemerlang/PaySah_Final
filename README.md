@@ -23,7 +23,7 @@ Receipt verification for Malaysian small businesses: compare receipt details wit
 - [Finalist technical tools declaration (PDF)](submission/SDC2026_UTeMkuCemerlang_TechDeclaration.pdf)
 - [Finalist pitch deck (PPTX)](submission/PaySahOnline_FinalPitch.pptx)
 - [Submission files and remaining items](submission/README.md)
-
+- [pitch video finalist]([submission/README.md](https://youtu.be/s_EkGvWsqXg))
 ## Overview
 
 ### Problem
