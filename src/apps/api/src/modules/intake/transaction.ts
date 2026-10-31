@@ -20,6 +20,12 @@ export async function intakeTransaction<T>(pool:pg.Pool,tenant:string,storage:Re
   committing=true;await db.query('COMMIT');return result;
  }catch(e){await db.query('ROLLBACK');if(!committing)for(const cleanup of afterRollback)try{await cleanup();}catch{}throw e;}finally{db.release();}
 }
+// With INTAKE_ALL_DEMO_SHOPS, one bot or form serves every demo shop: the link itself names the shop.
+export async function shopForToken(pool:pg.Pool,config:Config,connector:Connector,token:string){
+ if(config.INTAKE_ALL_DEMO_SHOPS!=='true')return connector.tenant;
+ const row=(await pool.query('SELECT l.tenant_id FROM intake_links l JOIN tenants t ON t.id=l.tenant_id AND t.is_demo WHERE l.channel=$1 AND l.connector_id=$2 AND l.token_hash=$3',[connector.channel,connector.id,digest(token)])).rows[0];
+ return (row?.tenant_id as string|undefined)??connector.tenant;
+}
 export async function validLink(c:Context,connector:Connector,tokenOrId:string,byId=false){
  return (await c.db.query(`SELECT l.*,o.payment_state FROM intake_links l JOIN orders o ON o.tenant_id=l.tenant_id AND o.id=l.order_id WHERE l.tenant_id=$1 AND l.channel=$2 AND l.connector_id=$3 AND ${byId?'l.id':'l.token_hash'}=$4 AND l.revoked_at IS NULL AND l.expires_at>now() AND o.payment_state='UNPAID'`,[connector.tenant,connector.channel,connector.id,byId?tokenOrId:digest(tokenOrId)])).rows[0];
 }
