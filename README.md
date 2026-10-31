@@ -47,9 +47,10 @@ The public prototype uses synthetic customers, receipts and bank credits. It doe
 | Frontend | React, TypeScript, Vite; Three.js for the product story |
 | Backend | Node.js, Express, persistent receipt worker |
 | Database | PostgreSQL |
-| Receipt extraction | RunPod vLLM / Qwen2.5-VL-7B-Instruct; Tesseract CPU fallback |
+| Receipt extraction | RunPod vLLM / Qwen2.5-VL-7B-Instruct; Tesseract CPU fallback; KrackedDevs gpt-5.4-mini as advisory third reader (only on disagreement) |
 | Hosting and storage | Replit deployment and private App Storage |
 | Intake integrations | Telegram and Google Forms / Apps Script |
+| Payment simulation | Mock customer payment page (/pay) with signed webhook, simulated, not a real gateway |
 
 ## Project structure
 
