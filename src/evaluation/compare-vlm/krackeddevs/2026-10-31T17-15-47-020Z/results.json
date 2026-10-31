@@ -1,0 +1,3291 @@
+{
+  "kind": "krackeddevs vision model vs CPU OCR, synthetic receipts only (offline comparison, not used by the app)",
+  "checked_at": "2026-10-31T17:15:47.020Z",
+  "status": "FINISHED",
+  "provider": "krackeddevs",
+  "model": "gpt-5.4-mini",
+  "prompt_version": "receipt-fields.v2",
+  "parser_version": "runpod-vlm-json.v1",
+  "manifest_sha256": "b28cc704b04375b0866bf4bcf2fb0210d8d24de8a29c77cfc8443faa5ce8c50f",
+  "cpu_baseline_checked_at": "2026-10-31T17:14:57.415Z",
+  "note": "Same 36-image diagnostic set and prompt as the RunPod run; not a held-out set. Wall time includes network, so it is not a fair speed comparison.",
+  "summary": {
+    "planned": 36,
+    "attempted": 36,
+    "not_attempted": 0,
+    "completed_valid": 36,
+    "failed_or_invalid": 0,
+    "correct_fields": 249,
+    "total_fields": 252,
+    "cpu_paired_correct_fields": 224,
+    "exact_samples": 33,
+    "false_eligible": 6,
+    "role_downgrades": 6,
+    "wall_p50_ms": 3336,
+    "wall_p95_ms": 15944
+  },
+  "model_self_report": {
+    "note": "The model naming its own doubts; a low count here does not make a reading safe",
+    "receipts_flagged": 0,
+    "receipts_with_wrong_fields": 3,
+    "wrong_fields_total": 3,
+    "wrong_fields_flagged": 0,
+    "correct_fields_flagged": 0
+  },
+  "with_cpu_cross_check": {
+    "rule": "Model field differs from CPU reading -> MODEL_UNCONFIRMED -> Owner review",
+    "cashier_wrongly_eligible": 0,
+    "owner_routed_by_cross_check": 12,
+    "rows": [
+      {
+        "id": "ledger-normal",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "CASHIER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "ledger-partial",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "ledger-wrong_account",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "ledger-scheduled",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "ledger-money_request",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "ledger-no_bank",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "ledger-high_value",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "ledger-normal_blur",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "CASHIER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "ledger-normal_rotation",
+        "disagreements": [
+          "bank_transaction_ref",
+          "recipient_account"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "ledger-normal_low_resolution",
+        "disagreements": [
+          "amount_sen",
+          "bank_transaction_ref",
+          "recipient_account",
+          "occurred_at"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "ledger-normal_multiple_amounts",
+        "disagreements": [
+          "amount_sen"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [
+          "amount_sen"
+        ],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "ledger-normal_cropped_status",
+        "disagreements": [
+          "occurred_at",
+          "status",
+          "document_type"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-normal",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "CASHIER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-partial",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-wrong_account",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-scheduled",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-money_request",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-no_bank",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-high_value",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-normal_blur",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "CASHIER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-normal_rotation",
+        "disagreements": [
+          "bank_transaction_ref",
+          "recipient_account"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-normal_low_resolution",
+        "disagreements": [
+          "amount_sen",
+          "bank_transaction_ref",
+          "recipient_account",
+          "occurred_at"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-normal_multiple_amounts",
+        "disagreements": [
+          "amount_sen"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [
+          "amount_sen"
+        ],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "portrait-normal_cropped_status",
+        "disagreements": [
+          "status",
+          "document_type"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-normal",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "CASHIER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-partial",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-wrong_account",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-scheduled",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-money_request",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-no_bank",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": false,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-high_value",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-normal_blur",
+        "disagreements": [],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "CASHIER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-normal_rotation",
+        "disagreements": [
+          "bank_transaction_ref",
+          "recipient_account",
+          "occurred_at"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-normal_low_resolution",
+        "disagreements": [
+          "amount_sen",
+          "bank_transaction_ref",
+          "customer_reference",
+          "occurred_at",
+          "status",
+          "document_type"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": true,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-normal_multiple_amounts",
+        "disagreements": [
+          "amount_sen"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [
+          "amount_sen"
+        ],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      },
+      {
+        "id": "compact-normal_cropped_status",
+        "disagreements": [
+          "status",
+          "document_type"
+        ],
+        "uncertain_fields": [],
+        "wrong_fields": [],
+        "eligible": true,
+        "required_role": "OWNER",
+        "expected_eligible": false,
+        "cashier_wrongly_eligible": false
+      }
+    ]
+  },
+  "rows": [
+    {
+      "id": "ledger-normal",
+      "sha256": "f2abff6d0b30098ded15d974d6504bd7e9e9ab1efa16c881440d9d927e3524d9",
+      "layout": "ledger",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6yJhefBoQElsGXGm2jlDoFkq5Wb",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 11588,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 678,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "ledger-partial",
+      "sha256": "5f10cc849adb16b4d330f2a1ff8c93c165aee7a77f839d2b08b5c181f10fc22b",
+      "layout": "ledger",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 5000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-50",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6yTTbEabf57reC9I46PqvzzGSKD",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 5000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-50",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"50.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-50\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 9953,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 5000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-50",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 285,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "PARTIAL_PAYMENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "ledger-wrong_account",
+      "sha256": "d0b6f2d455bc981402fa9151d4474d4057bf78c8dc28ca92bf995c4939557b63",
+      "layout": "ledger",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-WRONG-ACCOUNT",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6yb4lPMEff3XvBA6woIZ8aWfSw2",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-WRONG-ACCOUNT",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-WRONG-ACCOUNT\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 7652,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-WRONG-ACCOUNT",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 272,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "WRONG_RECIPIENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "ledger-scheduled",
+      "sha256": "3669249f2ec9f4f86173ae5e29d6695cd12db46f815f2a8991f6999989522d33",
+      "layout": "ledger",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SCHEDULED",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6yezPdaV2KRUlRY5n5Yhx9FH5dy",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SCHEDULED",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SCHEDULED\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 3511,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SCHEDULED",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 268,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "TRANSFER_NOT_COMPLETE"
+        ],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "ledger-money_request",
+      "sha256": "4cc03a793cb2b2dfb5e36cf7ae27aa3a072f97a77a8f8649a387e8845aba55aa",
+      "layout": "ledger",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "MONEY_REQUEST"
+      },
+      "job_id": "chatcmpl-Ef6yit2ZahgSXCnMmkSnwWha4wiCG",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "MONEY_REQUEST"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"MONEY_REQUEST\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 3044,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "MONEY_REQUEST"
+        },
+        "duration_ms": 259,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "MONEY_REQUEST"
+        ],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "ledger-no_bank",
+      "sha256": "1475a34666695009a3bb64318ebb2b081c4299f7b5cdac521101932500188afd",
+      "layout": "ledger",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-NOT-BOOKED",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6ylQAYnm6zSzxvU6s7HRy9DrtfH",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-NOT-BOOKED",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-NOT-BOOKED\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 2977,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-NOT-BOOKED",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 259,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "AWAITING_BANK",
+        "flags": [
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "ledger-high_value",
+      "sha256": "99e12eeaa81013bd1acfc1ebe817ce7eb2dd9ba09d1c35779248a6ac3f3ba593",
+      "layout": "ledger",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 78000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-780",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6you9ARtgVjyJPECwaypWZC1fj1",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 78000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-780",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"780.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-780\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 2936,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 78000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-780",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 316,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "HIGH_VALUE"
+        ],
+        "candidates": [
+          "diagnostic-78000"
+        ],
+        "matched_transaction_id": "diagnostic-78000",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 78000,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "ledger-normal_blur",
+      "sha256": "88aa1fe5ed399723e39361f9963bf3a379eeb5a9234ab080e3c5fd71f6148896",
+      "layout": "ledger",
+      "condition": "blur",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6yrE7oWI330liOYly362Ak9pjBi",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 3236,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 368,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "ledger-normal_rotation",
+      "sha256": "bc324a0f2109ac4160ba252ae0390938f3d5a9f99e963a60f91d8d27ad0c306a",
+      "layout": "ledger",
+      "condition": "rotation",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6yuwohNnCh541RpmCL6qnS5xBkB",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 5377,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-12g",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT.A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 253,
+        "correct_fields": 5
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "ledger-normal_low_resolution",
+      "sha256": "c15f9846ceaaecfac1461c03888e12d6be6af44bb8dd17db78097bdbd5bd6cf1",
+      "layout": "ledger",
+      "condition": "low_resolution",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6yz5Awjq39cuw8xgxZugNWV9lHK",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 1971,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": null,
+          "currency": "MYR",
+          "bank_transaction_ref": null,
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": null,
+          "occurred_at": null,
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 137,
+        "correct_fields": 3
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "ledger-normal_multiple_amounts",
+      "sha256": "4c0e67677463ff39dbdcfd775fc5fa73becb9376adc301aa2d39c9b3c72d9d8a",
+      "layout": "ledger",
+      "condition": "multiple_amounts",
+      "expected": {
+        "amount_sen": null,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6z8fKKVvAFlvONjeyilsgMxYlcG",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 6,
+      "total_fields": 7,
+      "mismatches": [
+        "amount_sen"
+      ],
+      "exact": false,
+      "wall_ms": 9537,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": null,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 323,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": true,
+      "role_downgrade": true
+    },
+    {
+      "id": "ledger-normal_cropped_status",
+      "sha256": "25b418508142af9dfecc673ce0f9c803a5b3f7041ff687b50eb237cf7ca3b34f",
+      "layout": "ledger",
+      "condition": "cropped_status",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6zBM7WPSbLjyZ3LoV33ngdjVroW",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 3802,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": null,
+          "status": "UNKNOWN",
+          "document_type": "UNKNOWN"
+        },
+        "duration_ms": 224,
+        "correct_fields": 4
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": true,
+      "role_downgrade": true
+    },
+    {
+      "id": "portrait-normal",
+      "sha256": "b3976b616c53d7c499f80facbbf59986a69ea3c610e6a2d97d32853bf7c09196",
+      "layout": "portrait",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6zOIRfyU7jZHlAx7kbPz6uPig49",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 12586,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 278,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "portrait-partial",
+      "sha256": "d09f2b2b40c8325d972b8aabf45b7e898dedf4463a30f78b871237e69b46d068",
+      "layout": "portrait",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 5000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-50",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6zf2RkuVjbZQjWmI3ZcLgRcpZLj",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 5000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-50",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"50.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-50\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 17311,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 5000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-50",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 319,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "PARTIAL_PAYMENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "portrait-wrong_account",
+      "sha256": "0ea810cf0d500c316dac99dc1c65bbf7963818011d6b6d8e0ce8047386ce95f3",
+      "layout": "portrait",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-WRONG-ACCOUNT",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef6zqCqX7JEtrOxl2TgZO2PuzEpSb",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-WRONG-ACCOUNT",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-WRONG-ACCOUNT\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 10716,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-WRONG-ACCOUNT",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 294,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "WRONG_RECIPIENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "portrait-scheduled",
+      "sha256": "b08f0c451489dc8ef020b6d5a920a4bd26ce38203da65a0189abaf6d9da870b8",
+      "layout": "portrait",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SCHEDULED",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef706bwzQpkTVHh2duU53oXuwpxFp",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SCHEDULED",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SCHEDULED\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 15944,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SCHEDULED",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 306,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "TRANSFER_NOT_COMPLETE"
+        ],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "portrait-money_request",
+      "sha256": "a281d636bb52a7323e87db47730b6867987d37ce524d94311eb50e7667332f1e",
+      "layout": "portrait",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "MONEY_REQUEST"
+      },
+      "job_id": "chatcmpl-Ef709j71UtfWkEnwTCPj66QdWYcL4",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "MONEY_REQUEST"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"MONEY_REQUEST\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 3269,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "MONEY_REQUEST"
+        },
+        "duration_ms": 280,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "MONEY_REQUEST"
+        ],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "portrait-no_bank",
+      "sha256": "3f19123e9a96956363b1ad53ec73b32f9550cfa1d3135b5ab526f30c9697cca1",
+      "layout": "portrait",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-NOT-BOOKED",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70DhyOQi9lBcMDL19Fjv8lU6sCf",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-NOT-BOOKED",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-NOT-BOOKED\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 3347,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-NOT-BOOKED",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 280,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "AWAITING_BANK",
+        "flags": [
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "portrait-high_value",
+      "sha256": "81fbc66e4ddc63698e606ff12c56544d185fcbe5e2e2ccbfe64ed495b03f79ba",
+      "layout": "portrait",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 78000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-780",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70GWWvHnhS4VpOwFCYVqnK2GOw3",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 78000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-780",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"780.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-780\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 3310,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 78000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-780",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 284,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "HIGH_VALUE"
+        ],
+        "candidates": [
+          "diagnostic-78000"
+        ],
+        "matched_transaction_id": "diagnostic-78000",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 78000,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "portrait-normal_blur",
+      "sha256": "fdef9a9c10a9a315f3b40af389bddf7f95d13283ea90fb3f4869c49a1315400e",
+      "layout": "portrait",
+      "condition": "blur",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70JtZoYZpB4qJIXZE1UXALP9CBT",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 3336,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 271,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "portrait-normal_rotation",
+      "sha256": "274884574ab67f0f8db1a7ad3524268f8c98fefc6c1ccb431c24c7665cd25666",
+      "layout": "portrait",
+      "condition": "rotation",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70NmLI2wm88QgTLsflHm3c2CcW2",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 4211,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-12g",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT.A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 300,
+        "correct_fields": 5
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "portrait-normal_low_resolution",
+      "sha256": "77411c4ac5f43fea55c7d4a48ef9adfd89f357274f95779c7d111b7976bc4fc9",
+      "layout": "portrait",
+      "condition": "low_resolution",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70QS5blqov2RE7Tycn7Is0aiAYq",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 2410,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12600,
+          "currency": "MYR",
+          "bank_transaction_ref": null,
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": null,
+          "occurred_at": null,
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 170,
+        "correct_fields": 3
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "portrait-normal_multiple_amounts",
+      "sha256": "9b31fd7e220e4eb5af505784f28bc7b550ff07ac91aec174c7b6700a73fb9059",
+      "layout": "portrait",
+      "condition": "multiple_amounts",
+      "expected": {
+        "amount_sen": null,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70ThEX7WTmwuGiSTr48jEyAao8B",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 6,
+      "total_fields": 7,
+      "mismatches": [
+        "amount_sen"
+      ],
+      "exact": false,
+      "wall_ms": 3254,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": null,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 484,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": true,
+      "role_downgrade": true
+    },
+    {
+      "id": "portrait-normal_cropped_status",
+      "sha256": "8e8de7488e7dd3e83b8dfda26629d7c7938e7bf6ec8cab8a2fe5f60d03816d8e",
+      "layout": "portrait",
+      "condition": "cropped_status",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70W4ycqzFtYNx6yajBHHO7GOWNW",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 2815,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "UNKNOWN",
+          "document_type": "UNKNOWN"
+        },
+        "duration_ms": 264,
+        "correct_fields": 5
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": true,
+      "role_downgrade": true
+    },
+    {
+      "id": "compact-normal",
+      "sha256": "ccdf92695ffa8dcfcf8b5012c67bd0289de2e0683d2886190c21073a533375e0",
+      "layout": "compact",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70ZjxtgMcJUjWZX7HfoXHQlM2VB",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 2955,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 297,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "compact-partial",
+      "sha256": "9a28b020894f2e73a955ccf55048ea1a266f94f91662248f7e42b6ca5febd90f",
+      "layout": "compact",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 5000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-50",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70cVYhZbIvx1xdk5AqA3cxzWIE8",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 5000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-50",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"50.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-50\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 2672,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 5000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-50",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 297,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "PARTIAL_PAYMENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "compact-wrong_account",
+      "sha256": "138cc5d68c5b2f1fb42eb4ad4ba6496749baf4056298f23d4bdcf75fb2c5d5c2",
+      "layout": "compact",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-WRONG-ACCOUNT",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70fUow5Z0gzpS9vp87IpTehLGrk",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-WRONG-ACCOUNT",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-WRONG-ACCOUNT\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 2865,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-WRONG-ACCOUNT",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 304,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "WRONG_RECIPIENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "compact-scheduled",
+      "sha256": "bf67870438ddaa729da40290d08bf2d175d33c0fb65cafee6f49bb3b7699df3a",
+      "layout": "compact",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SCHEDULED",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70hG7WZsPe0vjZb2gmcIzwIbje9",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SCHEDULED",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SCHEDULED\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 3356,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SCHEDULED",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 321,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "TRANSFER_NOT_COMPLETE"
+        ],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "compact-money_request",
+      "sha256": "184bda4925819851e1ff36f561c07ad66ac35157630ac920ab56ba6d90f7ff78",
+      "layout": "compact",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "MONEY_REQUEST"
+      },
+      "job_id": "chatcmpl-Ef70lMXz8sbZw6rv0Vy0IsLvZjyVY",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "MONEY_REQUEST"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"MONEY_REQUEST\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 2570,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "MONEY_REQUEST"
+        },
+        "duration_ms": 304,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "MONEY_REQUEST"
+        ],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "compact-no_bank",
+      "sha256": "ee5abcbd2b5d8c50e82e4559e80c8c6d4d7bb67eb5f8e73a0ab60ed95666c3b9",
+      "layout": "compact",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-NOT-BOOKED",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70nxXP30eAZa4hgluX0qHELPiwN",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-NOT-BOOKED",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-NOT-BOOKED\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 3766,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-NOT-BOOKED",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 293,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "AWAITING_BANK",
+        "flags": [
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "compact-high_value",
+      "sha256": "583f638a8bbbfa09012516768bc665431048c32ace2fd111d20c81177d6e50b0",
+      "layout": "compact",
+      "condition": "clear",
+      "expected": {
+        "amount_sen": 78000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-780",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70rgYL7pF7hXutq8N9LV3lzApWh",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 78000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-780",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"780.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-780\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 3227,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 78000,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-780",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 298,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "HIGH_VALUE"
+        ],
+        "candidates": [
+          "diagnostic-78000"
+        ],
+        "matched_transaction_id": "diagnostic-78000",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 78000,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "compact-normal_blur",
+      "sha256": "f3a22f8cac3cd55703b44315a5eb16ceefaa91d812cb2ae6afe642509288b0da",
+      "layout": "compact",
+      "condition": "blur",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef70xfNMnkWprqABLa9lshnWJMP7E",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 5229,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 296,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "compact-normal_rotation",
+      "sha256": "74ec1637d5f684442ab8719d20843113a36485593142efcc444b6001efd8b904",
+      "layout": "compact",
+      "condition": "rotation",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef715ERROedTgTv9sYkXgXKteEjSR",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 8579,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-12g",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-2",
+          "occurred_at": null,
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 281,
+        "correct_fields": 4
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "compact-normal_low_resolution",
+      "sha256": "26ff0f55e111c21f2aaeb6d7861b3283ee70bafc0bf3981aa5ed5a388afa5aaa",
+      "layout": "compact",
+      "condition": "low_resolution",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef718ZVGmbT7rN8QspVmhbRMQMsLj",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 1972,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": null,
+          "currency": "MYR",
+          "bank_transaction_ref": null,
+          "customer_reference": null,
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": null,
+          "status": "UNKNOWN",
+          "document_type": "UNKNOWN"
+        },
+        "duration_ms": 149,
+        "correct_fields": 1
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false
+    },
+    {
+      "id": "compact-normal_multiple_amounts",
+      "sha256": "733330f14cf3c776a4985465898d7dd809cc4b8e4f41a53f0a60a766792b3440",
+      "layout": "compact",
+      "condition": "multiple_amounts",
+      "expected": {
+        "amount_sen": null,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef71C5hHmV78R1MRZ1GGTScrp8wI8",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 6,
+      "total_fields": 7,
+      "mismatches": [
+        "amount_sen"
+      ],
+      "exact": false,
+      "wall_ms": 4778,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": null,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        },
+        "duration_ms": 318,
+        "correct_fields": 7
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": true,
+      "role_downgrade": true
+    },
+    {
+      "id": "compact-normal_cropped_status",
+      "sha256": "6aa0d477d3421aa54c848db6a28223fccb443529bc3eae158ee4142ff0a05705",
+      "layout": "compact",
+      "condition": "cropped_status",
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "job_id": "chatcmpl-Ef71Fg91xi9f24D16fGrsgCrK8PHK",
+      "state": "COMPLETED",
+      "error": null,
+      "output": {
+        "protocol_version": "paysah-extraction.v1",
+        "model_id": "gpt-5.4-mini",
+        "model_revision": "served-by-provider",
+        "device": "cuda",
+        "gpu_name": "provider-managed (remote API)",
+        "fields": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "SUCCESS",
+          "document_type": "TRANSFER_RECEIPT"
+        }
+      },
+      "raw": "{\"amount\":\"128.00\",\"currency\":\"RM\",\"bank_transaction_ref\":\"DEMO-BANK-128\",\"customer_reference\":\"DEMO-ORDER\",\"recipient_account\":\"DEMO-ACCOUNT-A\",\"occurred_at\":\"2026-10-22T06:00:00Z\",\"status\":\"SUCCESS\",\"uncertain_fields\":[],\"document_type\":\"TRANSFER_RECEIPT\"}",
+      "events": [],
+      "cancellation": "NOT_NEEDED",
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "wall_ms": 2571,
+      "cpu_baseline": {
+        "actual": {
+          "amount_sen": 12800,
+          "currency": "MYR",
+          "bank_transaction_ref": "DEMO-BANK-128",
+          "customer_reference": "DEMO-ORDER",
+          "recipient_account": "DEMO-ACCOUNT-A",
+          "occurred_at": "2026-10-22T06:00:00Z",
+          "status": "UNKNOWN",
+          "document_type": "UNKNOWN"
+        },
+        "duration_ms": 258,
+        "correct_fields": 5
+      },
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "diagnostic-12800"
+        ],
+        "matched_transaction_id": "diagnostic-12800",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": true,
+      "role_downgrade": true
+    }
+  ]
+}

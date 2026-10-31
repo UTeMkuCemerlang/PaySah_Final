@@ -1,0 +1,3497 @@
+{
+  "checked_at": "2026-10-31T17:14:57.415Z",
+  "dataset_version": "synthetic-layouts.v2",
+  "manifest_sha256": "b28cc704b04375b0866bf4bcf2fb0210d8d24de8a29c77cfc8443faa5ce8c50f",
+  "engine": "tesseract.js@7.0.0",
+  "parser": "labelled-receipt.v2",
+  "preprocessing": "sharp-rotate-grey-2000.v1",
+  "rules": "rules.v4-part-payment",
+  "environment": {
+    "node": "v24.12.0",
+    "platform": "win32",
+    "arch": "x64",
+    "os_release": "10.0.26200",
+    "cpu_model": "13th Gen Intel(R) Core(TM) i7-13650HX",
+    "logical_cpus": 20,
+    "host_memory_bytes": 16944848896,
+    "sharp_versions": {
+      "aom": "3.15.1",
+      "archive": "3.8.9",
+      "cairo": "1.18.6",
+      "cgif": "0.5.4",
+      "exif": "0.6.26",
+      "expat": "2.8.5",
+      "ffi": "3.8.0",
+      "fontconfig": "2.18.3",
+      "freetype": "2.14.3",
+      "fribidi": "1.0.17",
+      "glib": "2.90.0",
+      "harfbuzz": "14.5.0",
+      "heif": "1.23.5",
+      "highway": "1.4.0",
+      "imagequant": "2.4.1",
+      "lcms": "2.19.1",
+      "mozjpeg": "0826579",
+      "pango": "1.58.2",
+      "pixman": "0.46.4",
+      "png": "1.6.58",
+      "proxy-libintl": "0.5",
+      "rsvg": "2.63.2",
+      "tiff": "4.7.2",
+      "uhdr": "2.0.2",
+      "vips": "8.18.7",
+      "webp": "1.6.0",
+      "xml2": "2.15.4",
+      "zlib-ng": "2.3.3",
+      "sharp": "0.35.5"
+    }
+  },
+  "method": {
+    "data": "Team-authored SVG text and raster transformations using Sharp; fictional bank/identifiers only. No real receipts, external image service or feedback inputs.",
+    "limitations": "36 correlated images: 12 scenarios/conditions repeated across 3 layouts. Same English label vocabulary as the fixed parser; Arial/Courier New rendering depends on installed fonts. Not an independent holdout or real-bank benchmark. Currency fixed MYR is excluded from accuracy. Multiple-amount target is null because amount is ambiguous; cropped samples retain full source ground truth to count lost fields.",
+    "scored_fields": 7,
+    "currency_excluded": true,
+    "ground_truth": "Expected full source fields; multi-amount amount_sen=null is the ambiguity target. Cropped fields remain in denominator.",
+    "rule_check": "Pure verify() with two independently defined synthetic booked credits; each image is an isolated scenario. No database write, human decision or automatic payment.",
+    "memory": "process.memoryUsage.rss sampled every requested 25ms plus boundaries; whole Node process including worker thread, sampled lower bound; excludes API, PostgreSQL, OS and other processes.",
+    "cpu": "process.cpuUsage user+system microseconds converted to milliseconds; not machine utilization or cloud cost.",
+    "latency": "One pass in manifest order. First sample includes OCR worker initialization; remaining samples reuse worker unless it errors. Excludes image read/hash/decode before extraction."
+  },
+  "summary": {
+    "samples": 36,
+    "correct_fields": 224,
+    "total_fields": 252,
+    "exact_samples": 27,
+    "ocr_review_required": 10,
+    "unflagged_field_errors": 2,
+    "human_review_or_block": 30,
+    "expected_blocked": 21,
+    "expected_valid": 15,
+    "valid_but_blocked": 6,
+    "eligible_with_field_errors": 0,
+    "false_eligible": 0,
+    "role_downgrades": 0,
+    "extraction_errors": 0,
+    "p50_ms": 285,
+    "p95_ms": 484
+  },
+  "by_layout": {
+    "ledger": {
+      "samples": 12,
+      "correct_fields": 75,
+      "total_fields": 84,
+      "exact_samples": 9,
+      "ocr_review_required": 3,
+      "unflagged_field_errors": 1,
+      "human_review_or_block": 10,
+      "expected_blocked": 7,
+      "expected_valid": 5,
+      "valid_but_blocked": 2,
+      "eligible_with_field_errors": 0,
+      "false_eligible": 0,
+      "role_downgrades": 0,
+      "extraction_errors": 0,
+      "p50_ms": 268,
+      "p95_ms": 678
+    },
+    "portrait": {
+      "samples": 12,
+      "correct_fields": 76,
+      "total_fields": 84,
+      "exact_samples": 9,
+      "ocr_review_required": 3,
+      "unflagged_field_errors": 1,
+      "human_review_or_block": 10,
+      "expected_blocked": 7,
+      "expected_valid": 5,
+      "valid_but_blocked": 2,
+      "eligible_with_field_errors": 0,
+      "false_eligible": 0,
+      "role_downgrades": 0,
+      "extraction_errors": 0,
+      "p50_ms": 280,
+      "p95_ms": 484
+    },
+    "compact": {
+      "samples": 12,
+      "correct_fields": 73,
+      "total_fields": 84,
+      "exact_samples": 9,
+      "ocr_review_required": 4,
+      "unflagged_field_errors": 0,
+      "human_review_or_block": 10,
+      "expected_blocked": 7,
+      "expected_valid": 5,
+      "valid_but_blocked": 2,
+      "eligible_with_field_errors": 0,
+      "false_eligible": 0,
+      "role_downgrades": 0,
+      "extraction_errors": 0,
+      "p50_ms": 297,
+      "p95_ms": 321
+    }
+  },
+  "by_condition": {
+    "clear": {
+      "samples": 21,
+      "correct_fields": 147,
+      "total_fields": 147,
+      "exact_samples": 21,
+      "ocr_review_required": 0,
+      "unflagged_field_errors": 0,
+      "human_review_or_block": 18,
+      "expected_blocked": 15,
+      "expected_valid": 6,
+      "valid_but_blocked": 0,
+      "eligible_with_field_errors": 0,
+      "false_eligible": 0,
+      "role_downgrades": 0,
+      "extraction_errors": 0,
+      "p50_ms": 294,
+      "p95_ms": 321
+    },
+    "blur": {
+      "samples": 3,
+      "correct_fields": 21,
+      "total_fields": 21,
+      "exact_samples": 3,
+      "ocr_review_required": 0,
+      "unflagged_field_errors": 0,
+      "human_review_or_block": 0,
+      "expected_blocked": 0,
+      "expected_valid": 3,
+      "valid_but_blocked": 0,
+      "eligible_with_field_errors": 0,
+      "false_eligible": 0,
+      "role_downgrades": 0,
+      "extraction_errors": 0,
+      "p50_ms": 296,
+      "p95_ms": 368
+    },
+    "rotation": {
+      "samples": 3,
+      "correct_fields": 14,
+      "total_fields": 21,
+      "exact_samples": 0,
+      "ocr_review_required": 1,
+      "unflagged_field_errors": 2,
+      "human_review_or_block": 3,
+      "expected_blocked": 0,
+      "expected_valid": 3,
+      "valid_but_blocked": 3,
+      "eligible_with_field_errors": 0,
+      "false_eligible": 0,
+      "role_downgrades": 0,
+      "extraction_errors": 0,
+      "p50_ms": 281,
+      "p95_ms": 300
+    },
+    "low_resolution": {
+      "samples": 3,
+      "correct_fields": 7,
+      "total_fields": 21,
+      "exact_samples": 0,
+      "ocr_review_required": 3,
+      "unflagged_field_errors": 0,
+      "human_review_or_block": 3,
+      "expected_blocked": 0,
+      "expected_valid": 3,
+      "valid_but_blocked": 3,
+      "eligible_with_field_errors": 0,
+      "false_eligible": 0,
+      "role_downgrades": 0,
+      "extraction_errors": 0,
+      "p50_ms": 149,
+      "p95_ms": 170
+    },
+    "multiple_amounts": {
+      "samples": 3,
+      "correct_fields": 21,
+      "total_fields": 21,
+      "exact_samples": 3,
+      "ocr_review_required": 3,
+      "unflagged_field_errors": 0,
+      "human_review_or_block": 3,
+      "expected_blocked": 3,
+      "expected_valid": 0,
+      "valid_but_blocked": 0,
+      "eligible_with_field_errors": 0,
+      "false_eligible": 0,
+      "role_downgrades": 0,
+      "extraction_errors": 0,
+      "p50_ms": 323,
+      "p95_ms": 484
+    },
+    "cropped_status": {
+      "samples": 3,
+      "correct_fields": 14,
+      "total_fields": 21,
+      "exact_samples": 0,
+      "ocr_review_required": 3,
+      "unflagged_field_errors": 0,
+      "human_review_or_block": 3,
+      "expected_blocked": 3,
+      "expected_valid": 0,
+      "valid_but_blocked": 0,
+      "eligible_with_field_errors": 0,
+      "false_eligible": 0,
+      "role_downgrades": 0,
+      "extraction_errors": 0,
+      "p50_ms": 258,
+      "p95_ms": 264
+    }
+  },
+  "by_field": {
+    "amount_sen": {
+      "correct": 33,
+      "total": 36
+    },
+    "bank_transaction_ref": {
+      "correct": 30,
+      "total": 36
+    },
+    "customer_reference": {
+      "correct": 35,
+      "total": 36
+    },
+    "recipient_account": {
+      "correct": 31,
+      "total": 36
+    },
+    "occurred_at": {
+      "correct": 31,
+      "total": 36
+    },
+    "status": {
+      "correct": 32,
+      "total": 36
+    },
+    "document_type": {
+      "correct": 32,
+      "total": 36
+    }
+  },
+  "resources": {
+    "wall_ms": 10841,
+    "cpu_ms": 13079,
+    "rss_start_bytes": 103817216,
+    "sampled_peak_rss_bytes": 299384832,
+    "memory_samples": 392,
+    "first_sample_ms": 678,
+    "excluding_first_p50_ms": 285,
+    "excluding_first_p95_ms": 368
+  },
+  "rows": [
+    {
+      "id": "ledger-normal",
+      "layout": "ledger",
+      "scenario": "normal",
+      "condition": "clear",
+      "sha256": "f2abff6d0b30098ded15d974d6504bd7e9e9ab1efa16c881440d9d927e3524d9",
+      "bytes": 61271,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "9fa6ea9def816f3197cd4c6139148b04bd425a1a025645d3d4cb623cc0c04f9a",
+      "error": null,
+      "duration_ms": 678,
+      "cpu_ms": 1000,
+      "sampled_peak_rss_bytes": 266674176,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": "synthetic-credit-128",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": false
+    },
+    {
+      "id": "ledger-partial",
+      "layout": "ledger",
+      "scenario": "partial",
+      "condition": "clear",
+      "sha256": "5f10cc849adb16b4d330f2a1ff8c93c165aee7a77f839d2b08b5c181f10fc22b",
+      "bytes": 61033,
+      "expected": {
+        "amount_sen": 5000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-50",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 5000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-50",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 50.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-50"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 50.00\n\nBank transaction ref: DEMO-BANK-50\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "f6518facad18fdfc21b0ba4fc3d3a385f834637eb6d25b5b5a965bb5dbe7adb6",
+      "error": null,
+      "duration_ms": 285,
+      "cpu_ms": 641,
+      "sampled_peak_rss_bytes": 277622784,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "PARTIAL_PAYMENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "ledger-wrong_account",
+      "layout": "ledger",
+      "scenario": "wrong_account",
+      "condition": "clear",
+      "sha256": "d0b6f2d455bc981402fa9151d4474d4057bf78c8dc28ca92bf995c4939557b63",
+      "bytes": 62484,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-WRONG-ACCOUNT",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-WRONG-ACCOUNT",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-WRONG-ACCOUNT"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\n\nRecipient account: DEMO-WRONG-ACCOUNT\nOccurred at: 2026-10-22T06:00:00Z\n\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "56a866d00a1d0f13d101ac412b448f106db5a400e00466550bf897070410155b",
+      "error": null,
+      "duration_ms": 272,
+      "cpu_ms": 437,
+      "sampled_peak_rss_bytes": 236568576,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "WRONG_RECIPIENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "ledger-scheduled",
+      "layout": "ledger",
+      "scenario": "scheduled",
+      "condition": "clear",
+      "sha256": "3669249f2ec9f4f86173ae5e29d6695cd12db46f815f2a8991f6999989522d33",
+      "bytes": 60913,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SCHEDULED",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SCHEDULED",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SCHEDULED"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SCHEDULED\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "578d051f7edcf11d43135a438e10f89eda2e27d42b90f4923c0c907207d19e3e",
+      "error": null,
+      "duration_ms": 268,
+      "cpu_ms": 297,
+      "sampled_peak_rss_bytes": 236666880,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "TRANSFER_NOT_COMPLETE"
+        ],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "ledger-money_request",
+      "layout": "ledger",
+      "scenario": "money_request",
+      "condition": "clear",
+      "sha256": "4cc03a793cb2b2dfb5e36cf7ae27aa3a072f97a77a8f8649a387e8845aba55aa",
+      "bytes": 61429,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "MONEY_REQUEST"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "MONEY_REQUEST"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "MONEY_REQUEST"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: MONEY_REQUEST\n",
+      "preprocessed_sha256": "0526861196aae18200588e047a5c3fba5586cd0346148c15fabaac1e8d7c9d85",
+      "error": null,
+      "duration_ms": 259,
+      "cpu_ms": 282,
+      "sampled_peak_rss_bytes": 274837504,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "MONEY_REQUEST"
+        ],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "ledger-no_bank",
+      "layout": "ledger",
+      "scenario": "no_bank",
+      "condition": "clear",
+      "sha256": "1475a34666695009a3bb64318ebb2b081c4299f7b5cdac521101932500188afd",
+      "bytes": 61612,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-NOT-BOOKED",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-NOT-BOOKED",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-NOT-BOOKED"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount: RM 128.00\n\nBank transaction ref: DEMO-NOT-BOOKED\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "78b1896dc16fb8792a0791e5e6b5f978b70456b97e6b94cd8ef94c4ba7dca6c4",
+      "error": null,
+      "duration_ms": 259,
+      "cpu_ms": 328,
+      "sampled_peak_rss_bytes": 274923520,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "AWAITING_BANK",
+        "flags": [
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "ledger-high_value",
+      "layout": "ledger",
+      "scenario": "high_value",
+      "condition": "clear",
+      "sha256": "99e12eeaa81013bd1acfc1ebe817ce7eb2dd9ba09d1c35779248a6ac3f3ba593",
+      "bytes": 61554,
+      "expected": {
+        "amount_sen": 78000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-780",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 78000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-780",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 780.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-780"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 780.00\n\nBank transaction ref: DEMO-BANK-780\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "3f07d9d7c80ecf62a3aaf45c8e27441652d8de3d3fc24e5d819d778f80837f64",
+      "error": null,
+      "duration_ms": 316,
+      "cpu_ms": 374,
+      "sampled_peak_rss_bytes": 274640896,
+      "expected_eligible": true,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "HIGH_VALUE"
+        ],
+        "candidates": [
+          "synthetic-credit-780"
+        ],
+        "matched_transaction_id": "synthetic-credit-780",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 78000,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "ledger-normal_blur",
+      "layout": "ledger",
+      "scenario": "normal_blur",
+      "condition": "blur",
+      "sha256": "88aa1fe5ed399723e39361f9963bf3a379eeb5a9234ab080e3c5fd71f6148896",
+      "bytes": 154577,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "2b3fb8a1fef08bc1fac42e0aa04be6b01e07f65a5ca41e971c31d7fd9f82129e",
+      "error": null,
+      "duration_ms": 368,
+      "cpu_ms": 391,
+      "sampled_peak_rss_bytes": 275415040,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": "synthetic-credit-128",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": false
+    },
+    {
+      "id": "ledger-normal_rotation",
+      "layout": "ledger",
+      "scenario": "normal_rotation",
+      "condition": "rotation",
+      "sha256": "bc324a0f2109ac4160ba252ae0390938f3d5a9f99e963a60f91d8d27ad0c306a",
+      "bytes": 155259,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-12g",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT.A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 5,
+      "total_fields": 7,
+      "mismatches": [
+        "bank_transaction_ref",
+        "recipient_account"
+      ],
+      "exact": false,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-12g"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT.A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:002"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECE|PT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - ng actual payment\nAmount: RM 128.00\nBank transaction ref: DEMO-BANK-12g\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT.A\nOccurred at: 2026-10-22T06:00:002\nStatus: SUCCESS\nDocument type: TRANSFER_RECE|PT\n",
+      "preprocessed_sha256": "941b99f4d9d8a26a6dbf3e9d7b1677d18d4ee77526e4ce5a10df4fbed5013c22",
+      "error": null,
+      "duration_ms": 253,
+      "cpu_ms": 250,
+      "sampled_peak_rss_bytes": 281448448,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "WRONG_RECIPIENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": true,
+      "human_review_or_block": true
+    },
+    {
+      "id": "ledger-normal_low_resolution",
+      "layout": "ledger",
+      "scenario": "normal_low_resolution",
+      "condition": "low_resolution",
+      "sha256": "c15f9846ceaaecfac1461c03888e12d6be6af44bb8dd17db78097bdbd5bd6cf1",
+      "bytes": 9002,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": null,
+        "currency": "MYR",
+        "bank_transaction_ref": null,
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": null,
+        "occurred_at": null,
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 3,
+      "total_fields": 7,
+      "mismatches": [
+        "amount_sen",
+        "bank_transaction_ref",
+        "recipient_account",
+        "occurred_at"
+      ],
+      "exact": false,
+      "missing_fields": [
+        "amount_sen",
+        "bank_transaction_ref",
+        "recipient_account",
+        "occurred_at"
+      ],
+      "candidates": {
+        "Amount": [],
+        "Bank transaction ref": [],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [],
+        "Occurred at": [],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank no actual payment\nAmount RM 126.00\n\nBank ransaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nReciient account; DEMO-ACCOUNT-A\nOccurred a: 2026-10-22706:00:002\nStatus: SUCCESS\n\nDocument type: TRANSFER RECEIPT\n",
+      "preprocessed_sha256": "c80d3e0b1dba73fd59b3c26f993b2aa806b14324c3ad476271cddbed7746bea5",
+      "error": null,
+      "duration_ms": 137,
+      "cpu_ms": 125,
+      "sampled_peak_rss_bytes": 281681920,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "INVALID_RECEIPT",
+          "RECIPIENT_UNCERTAIN",
+          "AMBIGUOUS_MATCH",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": true,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "ledger-normal_multiple_amounts",
+      "layout": "ledger",
+      "scenario": "normal_multiple_amounts",
+      "condition": "multiple_amounts",
+      "sha256": "4c0e67677463ff39dbdcfd775fc5fa73becb9376adc301aa2d39c9b3c72d9d8a",
+      "bytes": 65940,
+      "expected": {
+        "amount_sen": null,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": null,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [
+        "amount_sen"
+      ],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\nService fee: RM 1.00\n",
+      "preprocessed_sha256": "21d78d7d241a7f6718a386468b7423b9c898f1b47f5e1be9f30d78e24eb2629f",
+      "error": null,
+      "duration_ms": 323,
+      "cpu_ms": 391,
+      "sampled_peak_rss_bytes": 281600000,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "INVALID_RECEIPT",
+          "AMOUNT_MISMATCH"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": true,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "ledger-normal_cropped_status",
+      "layout": "ledger",
+      "scenario": "normal_cropped_status",
+      "condition": "cropped_status",
+      "sha256": "25b418508142af9dfecc673ce0f9c803a5b3f7041ff687b50eb237cf7ca3b34f",
+      "bytes": 47707,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": null,
+        "status": "UNKNOWN",
+        "document_type": "UNKNOWN"
+      },
+      "correct_fields": 4,
+      "total_fields": 7,
+      "mismatches": [
+        "occurred_at",
+        "status",
+        "document_type"
+      ],
+      "exact": false,
+      "missing_fields": [
+        "occurred_at",
+        "status",
+        "document_type"
+      ],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z2"
+        ],
+        "Status": [],
+        "Document type": []
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z2\n",
+      "preprocessed_sha256": "be0768c0e4de4a3cb750d1d69c24f15186b0c625559af6cb22e4c5ba030cb92d",
+      "error": null,
+      "duration_ms": 224,
+      "cpu_ms": 234,
+      "sampled_peak_rss_bytes": 276893696,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "INVALID_RECEIPT",
+          "TRANSFER_NOT_COMPLETE",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": true,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "portrait-normal",
+      "layout": "portrait",
+      "scenario": "normal",
+      "condition": "clear",
+      "sha256": "b3976b616c53d7c499f80facbbf59986a69ea3c610e6a2d97d32853bf7c09196",
+      "bytes": 82667,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "922d7d3812c57f6075ccd653ad11f66d20e7dda5229c58b77fdf05872c5b200d",
+      "error": null,
+      "duration_ms": 278,
+      "cpu_ms": 313,
+      "sampled_peak_rss_bytes": 283275264,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": "synthetic-credit-128",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": false
+    },
+    {
+      "id": "portrait-partial",
+      "layout": "portrait",
+      "scenario": "partial",
+      "condition": "clear",
+      "sha256": "d09f2b2b40c8325d972b8aabf45b7e898dedf4463a30f78b871237e69b46d068",
+      "bytes": 82453,
+      "expected": {
+        "amount_sen": 5000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-50",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 5000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-50",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 50.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-50"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 50.00\n\nBank transaction ref: DEMO-BANK-50\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "e9af4e304ac69dedf2e7043afff0e06f5da28807fcfeafcf68b13df216c4e1ac",
+      "error": null,
+      "duration_ms": 319,
+      "cpu_ms": 390,
+      "sampled_peak_rss_bytes": 283275264,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "PARTIAL_PAYMENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "portrait-wrong_account",
+      "layout": "portrait",
+      "scenario": "wrong_account",
+      "condition": "clear",
+      "sha256": "0ea810cf0d500c316dac99dc1c65bbf7963818011d6b6d8e0ce8047386ce95f3",
+      "bytes": 83914,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-WRONG-ACCOUNT",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-WRONG-ACCOUNT",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-WRONG-ACCOUNT"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\n\nRecipient account: DEMO-WRONG-ACCOUNT\nOccurred at: 2026-10-22T06:00:00Z\n\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "167bb4f11ee4f3b761b0de5ff1e24a3679f4e355638ba926aaa42e05d75275ec",
+      "error": null,
+      "duration_ms": 294,
+      "cpu_ms": 360,
+      "sampled_peak_rss_bytes": 282333184,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "WRONG_RECIPIENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "portrait-scheduled",
+      "layout": "portrait",
+      "scenario": "scheduled",
+      "condition": "clear",
+      "sha256": "b08f0c451489dc8ef020b6d5a920a4bd26ce38203da65a0189abaf6d9da870b8",
+      "bytes": 82179,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SCHEDULED",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SCHEDULED",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SCHEDULED"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SCHEDULED\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "bf257d5bce4ab5fd4cd9e1343bd0c4db0dfee0fe9ba73934fb55506245f02c6e",
+      "error": null,
+      "duration_ms": 306,
+      "cpu_ms": 297,
+      "sampled_peak_rss_bytes": 282337280,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "TRANSFER_NOT_COMPLETE"
+        ],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "portrait-money_request",
+      "layout": "portrait",
+      "scenario": "money_request",
+      "condition": "clear",
+      "sha256": "a281d636bb52a7323e87db47730b6867987d37ce524d94311eb50e7667332f1e",
+      "bytes": 82926,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "MONEY_REQUEST"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "MONEY_REQUEST"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "MONEY_REQUEST"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: MONEY_REQUEST\n",
+      "preprocessed_sha256": "a419ee78114561bac92b58ac81fff2ca540d68fe31f4482ecb057360bdc2ba59",
+      "error": null,
+      "duration_ms": 280,
+      "cpu_ms": 265,
+      "sampled_peak_rss_bytes": 278298624,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "MONEY_REQUEST"
+        ],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "portrait-no_bank",
+      "layout": "portrait",
+      "scenario": "no_bank",
+      "condition": "clear",
+      "sha256": "3f19123e9a96956363b1ad53ec73b32f9550cfa1d3135b5ab526f30c9697cca1",
+      "bytes": 83089,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-NOT-BOOKED",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-NOT-BOOKED",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-NOT-BOOKED"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount: RM 128.00\n\nBank transaction ref: DEMO-NOT-BOOKED\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "d2b0f683f79362e37313b4879056bad9d4d5974d7bbd8298a3c5b9b38a6696f8",
+      "error": null,
+      "duration_ms": 280,
+      "cpu_ms": 266,
+      "sampled_peak_rss_bytes": 278609920,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "AWAITING_BANK",
+        "flags": [
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "portrait-high_value",
+      "layout": "portrait",
+      "scenario": "high_value",
+      "condition": "clear",
+      "sha256": "81fbc66e4ddc63698e606ff12c56544d185fcbe5e2e2ccbfe64ed495b03f79ba",
+      "bytes": 82870,
+      "expected": {
+        "amount_sen": 78000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-780",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 78000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-780",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 780.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-780"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 780.00\n\nBank transaction ref: DEMO-BANK-780\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "851d520254fec585e9c92f922c889240b4a016dfe9c97b0d0fd3920a8a14429d",
+      "error": null,
+      "duration_ms": 284,
+      "cpu_ms": 328,
+      "sampled_peak_rss_bytes": 280059904,
+      "expected_eligible": true,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "HIGH_VALUE"
+        ],
+        "candidates": [
+          "synthetic-credit-780"
+        ],
+        "matched_transaction_id": "synthetic-credit-780",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 78000,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "portrait-normal_blur",
+      "layout": "portrait",
+      "scenario": "normal_blur",
+      "condition": "blur",
+      "sha256": "fdef9a9c10a9a315f3b40af389bddf7f95d13283ea90fb3f4869c49a1315400e",
+      "bytes": 170974,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "99c6a9b38b3d7625c950583aa285e44e7fc67fbcd54c6ead71452e8ee6b4de76",
+      "error": null,
+      "duration_ms": 271,
+      "cpu_ms": 281,
+      "sampled_peak_rss_bytes": 281141248,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": "synthetic-credit-128",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": false
+    },
+    {
+      "id": "portrait-normal_rotation",
+      "layout": "portrait",
+      "scenario": "normal_rotation",
+      "condition": "rotation",
+      "sha256": "274884574ab67f0f8db1a7ad3524268f8c98fefc6c1ccb431c24c7665cd25666",
+      "bytes": 187266,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-12g",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT.A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 5,
+      "total_fields": 7,
+      "mismatches": [
+        "bank_transaction_ref",
+        "recipient_account"
+      ],
+      "exact": false,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-12g"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT.A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:007"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\nBank transaction ref: DEMO-BANK-12g\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT.A\nOccurred at: 2026-10-22T06:00:007\nStatus: SUCCESS\nDocument type: TRANSFER RECEIPT\n",
+      "preprocessed_sha256": "d8607861a195d06d62f6b536d4bd01cfe304d85fb491ff73f05b470e50ea71e3",
+      "error": null,
+      "duration_ms": 300,
+      "cpu_ms": 343,
+      "sampled_peak_rss_bytes": 282648576,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "WRONG_RECIPIENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": true,
+      "human_review_or_block": true
+    },
+    {
+      "id": "portrait-normal_low_resolution",
+      "layout": "portrait",
+      "scenario": "normal_low_resolution",
+      "condition": "low_resolution",
+      "sha256": "77411c4ac5f43fea55c7d4a48ef9adfd89f357274f95779c7d111b7976bc4fc9",
+      "bytes": 11324,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12600,
+        "currency": "MYR",
+        "bank_transaction_ref": null,
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": null,
+        "occurred_at": null,
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 3,
+      "total_fields": 7,
+      "mismatches": [
+        "amount_sen",
+        "bank_transaction_ref",
+        "recipient_account",
+        "occurred_at"
+      ],
+      "exact": false,
+      "missing_fields": [
+        "bank_transaction_ref",
+        "recipient_account",
+        "occurred_at"
+      ],
+      "candidates": {
+        "Amount": [
+          "RM 126.00"
+        ],
+        "Bank transaction ref": [],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [],
+        "Occurred at": [],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bark - no acual payment\nAmount: RM 126.00\n\nBank transaciion ref: DEMO-BANK. 128\nCustomer reference: DEMO-ORDER\nRecent account: DEMO-ACCOUNT-A\nOccurred a: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER RECEIPT\n",
+      "preprocessed_sha256": "09a5138b457402118b7764de829c4687dfcdb099c605ec6ef3a245670cbf8f95",
+      "error": null,
+      "duration_ms": 170,
+      "cpu_ms": 235,
+      "sampled_peak_rss_bytes": 282812416,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "INVALID_RECEIPT",
+          "RECIPIENT_UNCERTAIN",
+          "AMBIGUOUS_MATCH",
+          "PARTIAL_PAYMENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": true,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "portrait-normal_multiple_amounts",
+      "layout": "portrait",
+      "scenario": "normal_multiple_amounts",
+      "condition": "multiple_amounts",
+      "sha256": "9b31fd7e220e4eb5af505784f28bc7b550ff07ac91aec174c7b6700a73fb9059",
+      "bytes": 87260,
+      "expected": {
+        "amount_sen": null,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": null,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [
+        "amount_sen"
+      ],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\nStatus: SUCCESS\n\nDocument type: TRANSFER_RECEIPT\nService fee: RM 1.00\n",
+      "preprocessed_sha256": "fe47f10dabc0fbcb16937328b9d254538c7dea3aefead51af46c319677337bef",
+      "error": null,
+      "duration_ms": 484,
+      "cpu_ms": 672,
+      "sampled_peak_rss_bytes": 294105088,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "INVALID_RECEIPT",
+          "AMOUNT_MISMATCH"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": true,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "portrait-normal_cropped_status",
+      "layout": "portrait",
+      "scenario": "normal_cropped_status",
+      "condition": "cropped_status",
+      "sha256": "8e8de7488e7dd3e83b8dfda26629d7c7938e7bf6ec8cab8a2fe5f60d03816d8e",
+      "bytes": 60202,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "UNKNOWN",
+        "document_type": "UNKNOWN"
+      },
+      "correct_fields": 5,
+      "total_fields": 7,
+      "mismatches": [
+        "status",
+        "document_type"
+      ],
+      "exact": false,
+      "missing_fields": [
+        "status",
+        "document_type"
+      ],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:00Z"
+        ],
+        "Status": [],
+        "Document type": []
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\nDemo Bank - no actual payment\nAmount: RM 128.00\n\nBank transaction ref: DEMO-BANK-128\nCustomer reference: DEMO-ORDER\nRecipient account: DEMO-ACCOUNT-A\nOccurred at: 2026-10-22T06:00:00Z\n",
+      "preprocessed_sha256": "1bc62fa3aaf1ce2a2cfd3e33595df834369a51e1ed7b1df077ba1d795502a6f8",
+      "error": null,
+      "duration_ms": 264,
+      "cpu_ms": 484,
+      "sampled_peak_rss_bytes": 286244864,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "INVALID_RECEIPT",
+          "TRANSFER_NOT_COMPLETE"
+        ],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": true,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "compact-normal",
+      "layout": "compact",
+      "scenario": "normal",
+      "condition": "clear",
+      "sha256": "ccdf92695ffa8dcfcf8b5012c67bd0289de2e0683d2886190c21073a533375e0",
+      "bytes": 50595,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:002"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount :                  RM 128.00\n\nBank transaction ref:   DEMO-BANK-128\nCustomer reference:     DEMO-ORDER\nRecipient account:      DEMO-ACCOUNT-A\nOccurred at:             2026-10-22T06:00:002\nStatus:                  SUCCESS\n\nDocument type:         TRANSFER RECEIPT\n",
+      "preprocessed_sha256": "f79ab1f84baa28eebf26cc17a43046b1fa0fa38e899a64c73f049cdfeeb259ca",
+      "error": null,
+      "duration_ms": 297,
+      "cpu_ms": 297,
+      "sampled_peak_rss_bytes": 286392320,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": "synthetic-credit-128",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": false
+    },
+    {
+      "id": "compact-partial",
+      "layout": "compact",
+      "scenario": "partial",
+      "condition": "clear",
+      "sha256": "9a28b020894f2e73a955ccf55048ea1a266f94f91662248f7e42b6ca5febd90f",
+      "bytes": 50379,
+      "expected": {
+        "amount_sen": 5000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-50",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 5000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-50",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 50.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-50"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:002"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount :                  RM 50.00\n\nBank transaction ref:   DEMO-BANK-50\nCustomer reference:     DEMO-ORDER\nRecipient account:      DEMO-ACCOUNT-A\nOccurred at:           2026-10-22T06:00:002\nStatus:               SUCCESS\n\nDocument type:         TRANSFER RECEIPT\n",
+      "preprocessed_sha256": "948b480a37938c12d5380de24f960a0ebb25d64b50900adc56f2387b38e9caac",
+      "error": null,
+      "duration_ms": 297,
+      "cpu_ms": 360,
+      "sampled_peak_rss_bytes": 280915968,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "PARTIAL_PAYMENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "compact-wrong_account",
+      "layout": "compact",
+      "scenario": "wrong_account",
+      "condition": "clear",
+      "sha256": "138cc5d68c5b2f1fb42eb4ad4ba6496749baf4056298f23d4bdcf75fb2c5d5c2",
+      "bytes": 51636,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-WRONG-ACCOUNT",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-WRONG-ACCOUNT",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-WRONG-ACCOUNT"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:002"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount :                  RM 128.00\n\nBank transaction ref:   DEMO-BANK-128\nCustomer reference:     DEMO-ORDER\nRecipient account:       DEMO-WRONG-ACCOUNT\nOccurred at:             2026-10-22T06:00:002\nStatus:                  SUCCESS\n\nDocument type:         TRANSFER RECEIPT\n",
+      "preprocessed_sha256": "4ea17c5cfbec678556100e6b934ec59a7a0071fc1e35dad707f321e5d00a4c09",
+      "error": null,
+      "duration_ms": 304,
+      "cpu_ms": 547,
+      "sampled_peak_rss_bytes": 282501120,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "WRONG_RECIPIENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "compact-scheduled",
+      "layout": "compact",
+      "scenario": "scheduled",
+      "condition": "clear",
+      "sha256": "bf67870438ddaa729da40290d08bf2d175d33c0fb65cafee6f49bb3b7699df3a",
+      "bytes": 50522,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SCHEDULED",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SCHEDULED",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:002"
+        ],
+        "Status": [
+          "SCHEDULED"
+        ],
+        "Document type": [
+          "TRANSFER RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount :                  RM 128.00\n\nBank transaction ref:   DEMO-BANK-128\nCustomer reference:     DEMO-ORDER\nRecipient account:      DEMO-ACCOUNT-A\nOccurred at:             2026-10-22T06:00:002\nStatus:               SCHEDULED\n\nDocument type:         TRANSFER RECEIPT\n",
+      "preprocessed_sha256": "691adc24414bdee34267c208166373ba5bccc1f140e4696258b160d456dc735a",
+      "error": null,
+      "duration_ms": 321,
+      "cpu_ms": 500,
+      "sampled_peak_rss_bytes": 224825344,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "TRANSFER_NOT_COMPLETE"
+        ],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "compact-money_request",
+      "layout": "compact",
+      "scenario": "money_request",
+      "condition": "clear",
+      "sha256": "184bda4925819851e1ff36f561c07ad66ac35157630ac920ab56ba6d90f7ff78",
+      "bytes": 50500,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "MONEY_REQUEST"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "MONEY_REQUEST"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:002"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "MONEY REQUEST"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount :                  RM 128.00\n\nBank transaction ref:   DEMO-BANK-128\nCustomer reference:     DEMO-ORDER\nRecipient account:      DEMO-ACCOUNT-A\nOccurred at:             2026-10-22T06:00:002\nStatus:                  SUCCESS\n\nDocument type:         MONEY REQUEST\n",
+      "preprocessed_sha256": "9eeb7444981ce1287ecaf69690161d7c698bf309381a988cf5b34f3742c6e4ee",
+      "error": null,
+      "duration_ms": 304,
+      "cpu_ms": 344,
+      "sampled_peak_rss_bytes": 263979008,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "MONEY_REQUEST"
+        ],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "compact-no_bank",
+      "layout": "compact",
+      "scenario": "no_bank",
+      "condition": "clear",
+      "sha256": "ee5abcbd2b5d8c50e82e4559e80c8c6d4d7bb67eb5f8e73a0ab60ed95666c3b9",
+      "bytes": 51037,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-NOT-BOOKED",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-NOT-BOOKED",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-NOT-BOOKED"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:002"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount :                  RM 128.00\n\nBank transaction ref:   DEMO-NOT-BOOKED\nCustomer reference:     DEMO-ORDER\nRecipient account:      DEMO-ACCOUNT-A\nOccurred at:           2026-10-22T06:00:002\nStatus:               SUCCESS\n\nDocument type:         TRANSFER RECEIPT\n",
+      "preprocessed_sha256": "ed4f87e35885227477f32d3195e76412ea38f088963a2e34ef57160043077916",
+      "error": null,
+      "duration_ms": 293,
+      "cpu_ms": 281,
+      "sampled_peak_rss_bytes": 263516160,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "AWAITING_BANK",
+        "flags": [
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "compact-high_value",
+      "layout": "compact",
+      "scenario": "high_value",
+      "condition": "clear",
+      "sha256": "583f638a8bbbfa09012516768bc665431048c32ace2fd111d20c81177d6e50b0",
+      "bytes": 50815,
+      "expected": {
+        "amount_sen": 78000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-780",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 78000,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-780",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 780.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-780"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:002"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount :                  RM 780.00\n\nBank transaction ref:   DEMO-BANK-780\nCustomer reference:     DEMO-ORDER\nRecipient account:      DEMO-ACCOUNT-A\nOccurred at:           2026-10-22T06:00:002\nStatus:               SUCCESS\n\nDocument type:         TRANSFER RECEIPT\n",
+      "preprocessed_sha256": "cdfd3f6111ed31a7715cd317cb67be5ddaee8d81d3299fdf4ac66f1d6df2474a",
+      "error": null,
+      "duration_ms": 298,
+      "cpu_ms": 296,
+      "sampled_peak_rss_bytes": 262275072,
+      "expected_eligible": true,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "NEEDS_REVIEW",
+        "flags": [
+          "HIGH_VALUE"
+        ],
+        "candidates": [
+          "synthetic-credit-780"
+        ],
+        "matched_transaction_id": "synthetic-credit-780",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 78000,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "compact-normal_blur",
+      "layout": "compact",
+      "scenario": "normal_blur",
+      "condition": "blur",
+      "sha256": "f3a22f8cac3cd55703b44315a5eb16ceefaa91d812cb2ae6afe642509288b0da",
+      "bytes": 116503,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:002"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER_RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount:                  RM 128.00\n\nBank transaction ref:   DEMO-BANK-128\nCustomer reference:     DEMO-ORDER\n\nRecipient account:      DEMO-ACCOUNT-A\nOccurred at:             2026-10-22T06:00:002\nStatus:                  SUCCESS\n\nDocument type:          TRANSFER_RECEIPT\n",
+      "preprocessed_sha256": "b11f7ce2d8c857e1dc8154602cb75d7d5ca6ccd2b07273fbf586045af8a1f3df",
+      "error": null,
+      "duration_ms": 296,
+      "cpu_ms": 344,
+      "sampled_peak_rss_bytes": 262520832,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "MATCHED",
+        "flags": [],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": "synthetic-credit-128",
+        "eligible": true,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "CASHIER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": false,
+      "unflagged_field_error": false,
+      "human_review_or_block": false
+    },
+    {
+      "id": "compact-normal_rotation",
+      "layout": "compact",
+      "scenario": "normal_rotation",
+      "condition": "rotation",
+      "sha256": "74ec1637d5f684442ab8719d20843113a36485593142efcc444b6001efd8b904",
+      "bytes": 103142,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-12g",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-2",
+        "occurred_at": null,
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 4,
+      "total_fields": 7,
+      "mismatches": [
+        "bank_transaction_ref",
+        "recipient_account",
+        "occurred_at"
+      ],
+      "exact": false,
+      "missing_fields": [
+        "occurred_at"
+      ],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-12g"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-2"
+        ],
+        "Occurred at": [],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - No actual Payment\n\nAmount :                  RM 128.00\n\nBank transaction ref:   DEMO-BANK-12g\nCustomer reference:     DEMO-ORDER\nRecipient account:       DEMO-ACCOUNT-2\nOccurred  at:                 2026-10-22106: 09: gy\nStatus:                  SUCCESS\nDocument type:          TRANSFER RECEIPT\n",
+      "preprocessed_sha256": "e80a58dd8775cd45fc9c4ce17934afea30ac54d6e51835e80c9b9238505650f8",
+      "error": null,
+      "duration_ms": 281,
+      "cpu_ms": 297,
+      "sampled_peak_rss_bytes": 263041024,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "INVALID_RECEIPT",
+          "WRONG_RECIPIENT",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": true,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "compact-normal_low_resolution",
+      "layout": "compact",
+      "scenario": "normal_low_resolution",
+      "condition": "low_resolution",
+      "sha256": "26ff0f55e111c21f2aaeb6d7861b3283ee70bafc0bf3981aa5ed5a388afa5aaa",
+      "bytes": 4857,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": null,
+        "currency": "MYR",
+        "bank_transaction_ref": null,
+        "customer_reference": null,
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": null,
+        "status": "UNKNOWN",
+        "document_type": "UNKNOWN"
+      },
+      "correct_fields": 1,
+      "total_fields": 7,
+      "mismatches": [
+        "amount_sen",
+        "bank_transaction_ref",
+        "customer_reference",
+        "occurred_at",
+        "status",
+        "document_type"
+      ],
+      "exact": false,
+      "missing_fields": [
+        "amount_sen",
+        "bank_transaction_ref",
+        "occurred_at",
+        "status",
+        "document_type"
+      ],
+      "candidates": {
+        "Amount": [],
+        "Bank transaction ref": [],
+        "Customer reference": [],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [],
+        "Status": [],
+        "Document type": []
+      },
+      "raw_text": "SUNTHSTIC TRANSFER EXAMPLE\n\nGoma Bank - mo actual payment\n\npr—              Rn 120.00\n\nBank tramsaction efi DENG-MANE-1Z6\nCustomer roferoncer  DEMG-ORDER\nRecipient account: DEMO-ACCOUNT-A\noceorved att          2026-10-22008100:00¢\nStatus              svecss.\n\nDocument. type:         TRANS EER_HECEIET\n",
+      "preprocessed_sha256": "3a85a433febee62e6607449ea78597e57e8882a133f759ddf01f1a2efa34fe38",
+      "error": null,
+      "duration_ms": 149,
+      "cpu_ms": 141,
+      "sampled_peak_rss_bytes": 263188480,
+      "expected_eligible": true,
+      "expected_role": "CASHIER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "INVALID_RECEIPT",
+          "TRANSFER_NOT_COMPLETE",
+          "AMBIGUOUS_MATCH",
+          "BANK_NOT_FOUND"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": true,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "compact-normal_multiple_amounts",
+      "layout": "compact",
+      "scenario": "normal_multiple_amounts",
+      "condition": "multiple_amounts",
+      "sha256": "733330f14cf3c776a4985465898d7dd809cc4b8e4f41a53f0a60a766792b3440",
+      "bytes": 54515,
+      "expected": {
+        "amount_sen": null,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": null,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "correct_fields": 7,
+      "total_fields": 7,
+      "mismatches": [],
+      "exact": true,
+      "missing_fields": [
+        "amount_sen"
+      ],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:002"
+        ],
+        "Status": [
+          "SUCCESS"
+        ],
+        "Document type": [
+          "TRANSFER RECEIPT"
+        ]
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount :                  RM 128.00\n\nBank transaction ref:   DEMO-BANK-128\nCustomer reference:     DEMO-ORDER\nRecipient account:      DEMO-ACCOUNT-A\nOccurred at:             2026-10-22T06:00:002\nStatus:                  SUCCESS\n\nDocument type:         TRANSFER RECEIPT\nService fee: RM 1.00\n",
+      "preprocessed_sha256": "306f5cd64cb601f23be189d483e3067bf938ec22808d177608a47755415747df",
+      "error": null,
+      "duration_ms": 318,
+      "cpu_ms": 344,
+      "sampled_peak_rss_bytes": 264507392,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "INVALID_RECEIPT",
+          "AMOUNT_MISMATCH"
+        ],
+        "candidates": [],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": true,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    },
+    {
+      "id": "compact-normal_cropped_status",
+      "layout": "compact",
+      "scenario": "normal_cropped_status",
+      "condition": "cropped_status",
+      "sha256": "6aa0d477d3421aa54c848db6a28223fccb443529bc3eae158ee4142ff0a05705",
+      "bytes": 39957,
+      "expected": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "SUCCESS",
+        "document_type": "TRANSFER_RECEIPT"
+      },
+      "actual": {
+        "amount_sen": 12800,
+        "currency": "MYR",
+        "bank_transaction_ref": "DEMO-BANK-128",
+        "customer_reference": "DEMO-ORDER",
+        "recipient_account": "DEMO-ACCOUNT-A",
+        "occurred_at": "2026-10-22T06:00:00Z",
+        "status": "UNKNOWN",
+        "document_type": "UNKNOWN"
+      },
+      "correct_fields": 5,
+      "total_fields": 7,
+      "mismatches": [
+        "status",
+        "document_type"
+      ],
+      "exact": false,
+      "missing_fields": [
+        "status",
+        "document_type"
+      ],
+      "candidates": {
+        "Amount": [
+          "RM 128.00"
+        ],
+        "Bank transaction ref": [
+          "DEMO-BANK-128"
+        ],
+        "Customer reference": [
+          "DEMO-ORDER"
+        ],
+        "Recipient account": [
+          "DEMO-ACCOUNT-A"
+        ],
+        "Occurred at": [
+          "2026-10-22T06:00:002"
+        ],
+        "Status": [],
+        "Document type": []
+      },
+      "raw_text": "SYNTHETIC TRANSFER EXAMPLE\n\nDemo Bank - no actual payment\n\nAmount :                  RM 128.00\n\nBank transaction ref:   DEMO-BANK-128\nCustomer reference:     DEMO-ORDER\nRecipient account:      DEMO-ACCOUNT-A\nOccurred at:             2026-10-22T06:00:002\n",
+      "preprocessed_sha256": "83a1b5ab17bb7ad4d220474dfdb4ba8b58fd6f89b89890281cd72a5c4058feb1",
+      "error": null,
+      "duration_ms": 258,
+      "cpu_ms": 235,
+      "sampled_peak_rss_bytes": 264667136,
+      "expected_eligible": false,
+      "expected_role": "OWNER",
+      "rule_result": {
+        "outcome": "INVALID_EVIDENCE",
+        "flags": [
+          "INVALID_RECEIPT",
+          "TRANSFER_NOT_COMPLETE"
+        ],
+        "candidates": [
+          "synthetic-credit-128"
+        ],
+        "matched_transaction_id": null,
+        "eligible": false,
+        "partial_eligible": false,
+        "partial_transaction_id": null,
+        "partial_amount_sen": null,
+        "due_sen": 12800,
+        "required_role": "OWNER",
+        "evidence_source": "SYNTHETIC_FEED",
+        "rule_version": "rules.v4-part-payment",
+        "policy_version": 1,
+        "owner_review_threshold_sen": 50000
+      },
+      "false_eligible": false,
+      "role_downgrade": false,
+      "ocr_review_required": true,
+      "unflagged_field_error": false,
+      "human_review_or_block": true
+    }
+  ]
+}
