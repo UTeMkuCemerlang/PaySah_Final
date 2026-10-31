@@ -57,3 +57,5 @@ Health and readiness use the shared `APP_STAGE = FINALIST`. Build identity resol
 ## Owner authority (2026-10-31)
 
 `POST /api/v1/verifications/:id/confirm` lets the Owner confirm any eligible check directly; other roles still get 403 `OWNER_APPROVAL_REQUIRED` when the check needs the Owner. `POST /api/v1/orders/:id/accept-shortfall` now works on any `UNPAID` or `PARTIALLY_PAID` order, with or without a bank credit. It is Owner only, needs `{expected_version,reason}`, moves the order to `MANUALLY_CONFIRMED` (never `PAID`), allocates nothing, and logs `paid_sen` and `shortfall_sen`. `POST /api/v1/verifications/:id/reject-short` with `{expected_version,reason}` (Owner only) refuses a short payment: nothing is allocated, the order stays `UNPAID`, and the check is deactivated. The web app no longer offers the approval workflow or Shop settings; those API routes remain for existing records and tests.
+
+`INTAKE_ALL_DEMO_SHOPS=true` lets the configured Telegram bot and Google Form serve every demo shop. The link token (or the sender's latest Telegram binding) decides the shop, and non-demo shops are never included. It is off by default.

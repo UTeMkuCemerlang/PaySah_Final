@@ -15,6 +15,7 @@ const schema = z.object({
   TELEGRAM_BOT_USERNAME:z.string().regex(/^[A-Za-z0-9_]{5,32}$/).optional(),
   TELEGRAM_ALLOWED_SENDERS:z.string().regex(/^\d+(,\d+)*$/).optional(),
   INTAKE_HMAC_SECRET:z.string().min(32).optional(),
+  INTAKE_ALL_DEMO_SHOPS:z.enum(['true','false']).default('false'),
   GOOGLE_FORM_ENABLED:z.enum(['true','false']).default('false'),
   GOOGLE_FORM_TENANT_ID:z.uuid().optional(),
   GOOGLE_FORM_CONNECTOR_ID:z.string().regex(/^[A-Za-z0-9_-]{1,64}$/).default('team-form'),

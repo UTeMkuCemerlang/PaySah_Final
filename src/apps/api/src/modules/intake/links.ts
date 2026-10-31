@@ -11,11 +11,17 @@ import {event} from '../verification/service.js';
 import {intakeLinkSchema,versionSchema} from '../../../../../packages/contracts/src/index.js';
 import {digest} from './transaction.js';
 export function connectorFor(config:Config,channel:string){return channel==='TELEGRAM'?{enabled:config.TELEGRAM_ENABLED==='true',tenant:config.TELEGRAM_TENANT_ID,id:config.TELEGRAM_CONNECTOR_ID}:{enabled:config.GOOGLE_FORM_ENABLED==='true',tenant:config.GOOGLE_FORM_TENANT_ID,id:config.GOOGLE_FORM_CONNECTOR_ID};}
+export async function channelOpen(db:Pick<pg.Pool,'query'>,config:Config,channel:string,tenant:string){
+ const c=connectorFor(config,channel);
+ if(!c.enabled)return false;
+ if(c.tenant===tenant)return true;
+ return config.INTAKE_ALL_DEMO_SHOPS==='true'&&!!(await db.query('SELECT 1 FROM tenants WHERE id=$1 AND is_demo',[tenant])).rowCount;
+}
 export function installIntakeLinks(router:Router,pool:pg.Pool,write:Write,config:Config){
  router.get('/orders/:id/intake-links',async(req,res)=>{
   const tenant=res.locals.actor.tenant_id,id=z.uuid().parse(req.params.id);
   if(!(await pool.query('SELECT 1 FROM orders WHERE tenant_id=$1 AND id=$2',[tenant,id])).rowCount)throw new ApiError(404,'NOT_FOUND','Order not found');
-  const channels=['TELEGRAM','GOOGLE_FORM'].filter(ch=>{const c=connectorFor(config,ch);return c.enabled&&c.tenant===tenant;});
+  const channels:string[]=[];for(const ch of ['TELEGRAM','GOOGLE_FORM'])if(await channelOpen(pool,config,ch,tenant))channels.push(ch);
   const links=(await pool.query('SELECT id AS link_id,channel,expires_at,revoked_at FROM intake_links WHERE tenant_id=$1 AND order_id=$2 ORDER BY created_at DESC LIMIT 20',[tenant,id])).rows;
   res.json({channels,links,mock_payment:mockPaymentEnabled(config)});
  });
@@ -23,7 +29,7 @@ export function installIntakeLinks(router:Router,pool:pg.Pool,write:Write,config
   let created:string|undefined;
   try{await write(intakeLinkSchema,async(c,b)=>{
    const id=z.uuid().parse(req.params.id),connector=connectorFor(config,b.channel);
-   if(!connector.enabled||connector.tenant!==c.actor.tenant_id)throw new ApiError(404,'CHANNEL_DISABLED','Channel unavailable');
+   if(!await channelOpen(c.db,config,b.channel,c.actor.tenant_id))throw new ApiError(404,'CHANNEL_DISABLED','Channel unavailable');
    const order=(await c.db.query('SELECT * FROM orders WHERE tenant_id=$1 AND id=$2 FOR UPDATE',[c.actor.tenant_id,id])).rows[0];
    if(!order)throw new ApiError(404,'NOT_FOUND','Order not found');
    if(order.version!==b.expected_version)throw new ApiError(409,'STALE_VERSION','Order changed');

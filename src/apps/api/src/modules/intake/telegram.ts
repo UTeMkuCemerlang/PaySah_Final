@@ -6,7 +6,7 @@ import {ApiError} from '../../business.js';
 import type {ReceiptStorage} from '../receipts/storage.js';
 import {MAX_IMAGE_BYTES} from '../receipts/images.js';
 import {fingerprint} from '../verification/fixtures.js';
-import {digest,intakeTransaction,receiveImage,validLink,type Connector} from './transaction.js';
+import {digest,intakeTransaction,receiveImage,shopForToken,validLink,type Connector} from './transaction.js';
 import {event} from '../verification/service.js';
 
 const integer=z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER);
@@ -56,6 +56,8 @@ export async function receiveTelegram(pool:pg.Pool,config:Config,storage:Receipt
  const connector:Connector={tenant:config.TELEGRAM_TENANT_ID!,channel:'TELEGRAM',id:config.TELEGRAM_CONNECTOR_ID};
  if(config.TELEGRAM_INTAKE_MODE==='demo_link'&&!(await pool.query('SELECT id FROM tenants WHERE id=$1 AND is_demo',[connector.tenant])).rowCount)throw new ApiError(503,'INTAKE_RETRY','Demo intake requires a demo shop');
  const sender=createHmac('sha256',config.INTAKE_HMAC_SECRET!).update(`${connector.id}:${m.from.id}`).digest('hex'),payload=fingerprint(body);
+ if(m.text?.startsWith('/start '))connector.tenant=await shopForToken(pool,config,connector,m.text.slice(7));
+ else if(config.INTAKE_ALL_DEMO_SHOPS==='true')connector.tenant=(await pool.query("SELECT b.tenant_id FROM intake_bindings b JOIN tenants t ON t.id=b.tenant_id AND t.is_demo WHERE b.channel='TELEGRAM' AND b.connector_id=$1 AND b.sender_hash=$2 AND b.expires_at>now() ORDER BY b.expires_at DESC LIMIT 1",[connector.id,sender])).rows[0]?.tenant_id??connector.tenant;
  if(m.text?.startsWith('/start ')){
   const token=m.text.slice(7);
   let externalId:string|undefined;
